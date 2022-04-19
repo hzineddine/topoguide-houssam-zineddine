@@ -11,5 +11,9 @@ def sortie(request,itineraire_id):
     
     
     return render(request,'itineraires/sortie.html',{'list_sortie': list_sortie} )
+
+def detail_sortie(request,sortie_id):
+    sortie=get_object_or_404(Sortie,id=sortie_id)
+    return render(request, 'itineraires/detail_sortie.html',{'sortie':sortie})
     
 # Create your views here.
