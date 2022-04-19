@@ -34,12 +34,14 @@ class Meteo(models.Model):
 class Sortie(models.Model):
     utilisateur=models.ForeignKey(User,on_delete=models.CASCADE)
     itineraire = models.ForeignKey('Itineraire',on_delete=models.CASCADE)
-    
+    date_sortie=models.DateField('Date de sortie')
     duree_reelle=models.FloatField('Durée réelle')
     nombre_personne=models.IntegerField('Nombres de personnnes')
     experience=models.ForeignKey('Experience',on_delete=models.CASCADE)
     meteo=models.ForeignKey('Meteo',on_delete=models.CASCADE)
     difficulte_ressentie=models.ForeignKey('Niveau',on_delete=models.CASCADE)
+    def __str__(self):
+        return self.utilisateur.get_username()
     
     
     
