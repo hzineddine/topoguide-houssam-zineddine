@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+import datetime
+from django.utils import timezone
+
 class Niveau(models.Model):
     niveau=models.IntegerField('Niveau')
     def __str__(self):
@@ -31,7 +34,7 @@ class Meteo(models.Model):
 class Sortie(models.Model):
     utilisateur=models.ForeignKey(User,on_delete=models.CASCADE)
     itineraire = models.ForeignKey('Itineraire',on_delete=models.CASCADE)
-    date_sortie=models.DateField('Date de sortie')
+    
     duree_reelle=models.FloatField('Durée réelle')
     nombre_personne=models.IntegerField('Nombres de personnnes')
     experience=models.ForeignKey('Experience',on_delete=models.CASCADE)
