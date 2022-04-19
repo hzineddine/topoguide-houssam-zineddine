@@ -1,0 +1,50 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+
+    
+    
+    <title>{% block title %}Détail Sortie{% endblock %}</title>
+</head>
+<header>
+    
+    <button onclick=window.location.href="../../accounts/logout" style="float : right;"  class="favorite styled"
+        type="button">
+        Logout
+    </button>
+    
+    
+    
+    
+</button>
+
+    <h1> <a href="../../sorties/{{sortie.itineraire.id}}"> {{sortie.itineraire}} </a> - Sortie de {{sortie.utilisateur}}  </h1>
+    
+</header>
+
+<body>
+
+{% block content %}
+
+Date : {{sortie.date_sortie}} </br>
+Durée réelle : {{sortie.duree_reelle}}h</br>
+Nombre de participants : {{sortie.nombre_personne}}</br>
+Type de randonneurs : {{sortie.experience}}</br>
+Météo : {{sortie.meteo}}</br>
+Difficultée ressentie : {{sortie.difficulte_ressentie}}/5</br>
+
+
+
+
+
+{% endblock content %}
+</body>
+</html>
