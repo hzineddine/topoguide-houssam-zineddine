@@ -6,8 +6,11 @@ from django.utils import timezone
 
 class Niveau(models.Model):
     niveau=models.IntegerField('Niveau')
+    
     def __str__(self):
         return str(self.niveau) 
+    
+    
 class Itineraire(models.Model):
     titre = models.CharField(max_length=200)
     point_depart=models.CharField(max_length=200)
@@ -19,6 +22,7 @@ class Itineraire(models.Model):
     denivele_negatif = models.IntegerField('Dénivelé négatif (m) ')
     duree_estimee=models.FloatField('Durée (h) ')
     difficulte_estimee=models.ForeignKey('Niveau',on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.titre
 class Experience(models.Model):

@@ -5,8 +5,8 @@ from . import views
 app_name = 'itineraires'
 urlpatterns=[
     path('itineraires/',views.itineraire_list,name='itineraire_list'),
-    path('sorties/<int:itineraire_id>/',views.sortie,name='sortie'),
-    path('sortie/<int:sortie_id>/',views.detail_sortie,name='detail_sortie'),
-    path('nouvelle_sortie/',views.nouvelle_sortie,name='nouvelle_sortie'),
-    path('modifier_sortie/<int:sortie_id>/',views.modifier_sortie,name='modifier_sortie')
+    path('itineraires/sorties/<int:itineraire_id>/',views.sortie,name='sorties'),
+    path('itineraires/sortie/<int:sortie_id>/',views.detail_sortie,name='detail_sortie'),
+    path('itineraires/nouvelle_sortie/<int:itineraire_id>',views.nouvelle_sortie,name='nouvelle_sortie'),
+    path('itineraires/modifier_sortie/<int:sortie_id>/',views.modifier_sortie,name='modifier_sortie')
 ]

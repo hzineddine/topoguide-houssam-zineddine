@@ -1,0 +1,6 @@
+Saissez une nouvelle sortie : 
+<form method="POST" class="post-form">
+  {% csrf_token %}
+  {{sortie_form.as_p}}
+  <input type="submit" value="Envoyer">
+</form>
