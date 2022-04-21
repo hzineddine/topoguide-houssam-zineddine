@@ -8,4 +8,5 @@ urlpatterns=[
     path('sorties/<int:itineraire_id>/',views.sortie,name='sortie'),
     path('sortie/<int:sortie_id>/',views.detail_sortie,name='detail_sortie'),
     path('nouvelle_sortie/',views.nouvelle_sortie,name='nouvelle_sortie'),
+    path('modifier_sortie/<int:sortie_id>/',views.modifier_sortie,name='modifier_sortie')
 ]
