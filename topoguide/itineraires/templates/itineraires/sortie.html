@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+
+    
+    
+    <title>{% block title %}Sortie{% endblock %}</title>
+</head>
+<header>
+    
+    {%if user.is_authenticated%}
+    <button onclick=window.location.href="../../../accounts/logout" style="float : right;"  class="favorite styled"
+        type="button">
+        Logout
+    </button>
+    {%else%}
+    <button onclick=window.location.href="../../../accounts/login" style="float : right;"  class="favorite styled"
+        type="button">
+        Login
+    </button>
+    {%endif%}
+    
+    
+    
+    
+</button>
+
+    <h1> Topoguide </h1>
+    
+</header>
+
+<body>
+
+{% block content %}
+
+<h2> {{list_sortie.first.itineraire}} </h2>
+
+<p>
+
+    Point de départ : {{list_sortie.first.itineraire.point_depart}}</br>
+    Altitude : {{list_sortie.first.itineraire.altitude_depart}}</br>
+    Altitude max : {{list_sortie.first.itineraire.altitude_max}}</br>
+    Altitude min : {{list_sortie.first.itineraire.altitude_min}}</br>
+    Dénivelé positif : {{list_sortie.first.itineraire.denivele_positif}} </br>
+    Dénivelé négatif : {{list_sortie.first.itineraire.denivele_negatif}}</br>
+    Durée : {{list_sortie.first.itineraire.duree_estimee}}h</br>
+    Difficulté estimée : {{list_sortie.first.itineraire.difficulte_estimee}}/5</br>
+
+</p>
+
+<p> Description de l'itinéraire : {{list_sortie.first.itineraire.description|linebreaks}} </P>
+
+<h> Liste de sorties correspondants à l'itinéraire </h1>
+
+<div class="row">
+    <table class="table table-striped" style="text-align : center;border-collapse:collapse;">
+        <thead>
+        <tr>
+            <th>Par</th>
+            <th> Date de sortie</th>
+            <th> Nombre de personne</th>
+            
+            
+        </tr>
+        </thead>
+        <tbody> 
+            {% for sortie in list_sortie %}
+            
+            <tr style="border-top:1px solid">
+                {%if sortie.utilisateur == request.user%}    
+                    <td>{{sortie.utilisateur}}</td>
+                    <td>{{ sortie.date_sortie }}</td>
+                    <td>{{ sortie.nombre_personne }}</td>
+                    <td> <button onclick=window.location.href="{%url 'itineraires:detail_sortie' sortie.id %}" style="float : right;"  class="favorite styled"
+                    type="button">
+                    Consulter
+                    </button> </td>
+                    <td> <button onclick=window.location.href="{%url 'itineraires:modifier_sortie' sortie.id %}" style="float : right;"  class="favorite styled"
+                        type="button">
+                        Modifier
+                        </button> </td>
+                {%else%}
+                    <td>{{sortie.utilisateur}}</td>
+                    <td>{{ sortie.date_sortie }}</td>
+                    <td>{{ sortie.nombre_personne }}</td>
+                    <td> <button onclick=window.location.href="{%url 'itineraires:detail_sortie' sortie.id %}" style="float : right;"  class="favorite styled"
+                type="button">
+                Consulter
+                    </button> </td>
+                
+                {%endif%}
+            </tr>
+            {%endfor%}
+        
+        </tbody>
+    </table>
+
+</div>
+
+
+{% endblock content %}
+</body>
+<foot>
+    <button style="position:relative;
+
+    bottom:0;
+    
+    
+    
+    
+    
+    " onclick=window.location.href="{%url 'itineraires:nouvelle_sortie' list_sortie.first.itineraire.id %}" style="float : right;"  class="favorite styled"
+                    type="button">
+                    Ajouter nouvelle sortie
+                </button>
+</foot>
+</html>

@@ -3,7 +3,7 @@ from .models import Itineraire,Sortie
 from django.contrib.auth.decorators import login_required
 from .forms import SortieForm
 
-@login_required
+
 #Vue correspondante à la liste des itinéraires
 def itineraire_list(request):
     list_itineraire=Itineraire.objects.order_by('id')
@@ -20,6 +20,7 @@ def detail_sortie(request,sortie_id):
     return render(request, 'itineraires/detail_sortie.html',{'sortie':sortie})
 
 #Vue correspondante au formulaire d'ajout d'une nouvelle sortie
+@login_required
 def nouvelle_sortie(request,itineraire_id):
     if request.method=="POST":
         sortie_form=SortieForm(request.POST)
@@ -36,6 +37,7 @@ def nouvelle_sortie(request,itineraire_id):
     return render(request,'itineraires/nouvelle_sortie.html',{'sortie_form': sortie_form , 'itineraire' : itineraire})
 
 #Vue correspondante au formulaire d'une modification d'une sortie
+@login_required
 def modifier_sortie(request,sortie_id):
     sortie=get_object_or_404(Sortie, pk=sortie_id)
     itineraire=sortie.itineraire

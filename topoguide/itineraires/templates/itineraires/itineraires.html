@@ -15,11 +15,17 @@
     <title>{% block title %}Itineraire{% endblock %}</title>
 </head>
 <header>
-    
+    {%if user.is_authenticated%}
     <button onclick=window.location.href="../accounts/logout" style="float : right;"  class="favorite styled"
         type="button">
         Logout
     </button>
+    {%else%}
+    <button onclick=window.location.href="../accounts/login" style="float : right;"  class="favorite styled"
+        type="button">
+        Login
+    </button>
+    {%endif%}
     
     
     
