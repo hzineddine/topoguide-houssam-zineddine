@@ -4,6 +4,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 import datetime
 from django.utils import timezone
 
+#Le modèle Niveau qui permet de créer les cinq niveaux de la difficultée estimée
 class Niveau(models.Model):
     niveau=models.IntegerField('Niveau')
     
@@ -11,6 +12,7 @@ class Niveau(models.Model):
         return str(self.niveau) 
     
     
+#Le modèle itinéraire qui correspond à la table des itinéraires.
 class Itineraire(models.Model):
     titre = models.CharField(max_length=200)
     point_depart=models.CharField(max_length=200)
@@ -25,16 +27,21 @@ class Itineraire(models.Model):
     
     def __str__(self):
         return self.titre
+    
+#Modèle expérience qui correspond aux trois choix des expériences des groupes de personnes.
 class Experience(models.Model):
     choix=models.CharField(max_length=100)
+    
     def __str__(self):
         return self.choix
-    
+
+#Le modèle méteo qui correspond aux trois choix de météo.    
 class Meteo(models.Model):
     choix=models.CharField(max_length=100)
     def __str__(self):
         return self.choix
    
+#Le modèle Sortie qui correspond à la table des sorties.   
 class Sortie(models.Model):
     utilisateur=models.ForeignKey(User,on_delete=models.CASCADE)
     itineraire = models.ForeignKey('Itineraire',on_delete=models.CASCADE)
@@ -44,6 +51,7 @@ class Sortie(models.Model):
     experience=models.ForeignKey('Experience',on_delete=models.CASCADE)
     meteo=models.ForeignKey('Meteo',on_delete=models.CASCADE)
     difficulte_ressentie=models.ForeignKey('Niveau',on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.utilisateur.get_username()
     
@@ -52,4 +60,3 @@ class Sortie(models.Model):
     
     
         
-# Create your models here.

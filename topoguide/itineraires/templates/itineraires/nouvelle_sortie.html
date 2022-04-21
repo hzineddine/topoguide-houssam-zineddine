@@ -1,4 +1,4 @@
-Saissez une nouvelle sortie : 
+Saissez une nouvelle sortie (L'utilisateur {{request.user}} pour l'itinéraire {{itineraire}} ) : 
 <form method="POST" class="post-form">
   {% csrf_token %}
   {{sortie_form.as_p}}

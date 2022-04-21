@@ -16,7 +16,7 @@
 </head>
 <header>
     
-    <button onclick=window.location.href="../../accounts/logout" style="float : right;"  class="favorite styled"
+    <button onclick=window.location.href="../../../accounts/logout" style="float : right;"  class="favorite styled"
         type="button">
         Logout
     </button>
@@ -33,7 +33,7 @@
 <body>
 
 {% block content %}
-
+Point de départ de l'itinéraire : {{sortie.itineraire.point_depart}}</br>
 Date : {{sortie.date_sortie}} </br>
 Durée réelle : {{sortie.duree_reelle}}h</br>
 Nombre de participants : {{sortie.nombre_personne}}</br>
@@ -42,9 +42,15 @@ Météo : {{sortie.meteo}}</br>
 Difficultée ressentie : {{sortie.difficulte_ressentie}}/5</br>
 
 
+<button onclick=window.location.href="{%url 'itineraires:modifier_sortie' sortie.id %}"   class="favorite styled"
+                        type="button">
+                    Modifier
+                        </button>
+
 
 
 
 {% endblock content %}
 </body>
+
 </html>

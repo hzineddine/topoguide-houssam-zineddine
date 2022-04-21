@@ -1,5 +1,5 @@
 {% block content %}
-    <h2>Modifie ta sortie</h2>
+    <h2>Bienvenu {{request.user}} dans la page de modification  pour l'itineraire {{itineraire}}</h2>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ sortie_form.as_p }}
         <button type="submit" class="save btn btn-secondary">Save</button>
